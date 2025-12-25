@@ -3,94 +3,200 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
   <title>Moahloli IT Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: 'Times New Roman', Times, serif;
-      background: #f5f5f5;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      background: #0e0f11;
+      color: #e5e5e5;
+      overflow-x: hidden;
     }
+
+    html { scroll-behavior: smooth; }
+
+  
+    /* HERO WATERMARK BACKGROUND */
     header {
-      background: #000000;
-      color: white;
-      padding: 20px;
+      background: linear-gradient(135deg, #141313, #092253);
+      padding: 60px 20px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: fadeDown 1s ease-in-out;
     }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 450px;
+      height: 450px;
+      background-image: url('MITS Logo.JPEG');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.08;
+      transform: translate(-50%, -50%);
+      filter: blur(1px);
+      pointer-events: none;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px);} 
+      to { opacity: 1; transform: translateY(0);} 
+    }
+
+    header h1 { font-size: 3rem; margin: 0; font-weight: 700; position: relative; }
+    header p { opacity: 0.8; font-size: 1.2rem; position: relative; }
+
+    /* NAVBAR */
     nav {
-      background: #4c4b50;
-      padding: 10px;
-      text-align: center;
+      background: #111;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(7px);
+      transition: 0.4s;
     }
+    nav img.compact-logo {
+      height: 35px;
+      margin-right: 20px;
+      opacity: 0;
+      transition: 0.4s ease;
+    }
+    nav.scrolled img.compact-logo {
+      opacity: 1;
+    }/* MOBILE MENU */
+      .menu-btn{display:none;cursor:pointer;font-size:1.8rem;color:white}
+      @media(max-width:750px){nav{justify-content:space-between}nav a{display:none}nav.active a{display:block;padding:12px 0}nav.active{flex-direction:column;align-items:flex-start}.menu-btn{display:block}}
+
+      /* CARDS */
+    .card{padding:25px;border-radius:12px;background:#1a1c20;box-shadow:0 0 25px #0006;transition:.3s;cursor:pointer;position:relative;overflow:hidden}
+    .card:hover{transform:translateY(-10px);box-shadow:0 0 35px rgba(0,110,255,.45)}
+    .card:before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(120deg,transparent,rgba(30,144,255,.3),transparent);transition:.5s}
+    .card:hover:before{left:100%}
+
     nav a {
-      color: white;
-      margin: 0 15px;
+      color: #fff;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      position: relative;
     }
-    nav a:hover {
-      text-decoration: underline;
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #1e90ff;
+      transition: 0.3s;
     }
+    nav a:hover::after { width: 100%; }
+
     .section {
-      padding: 40px;
-      max-width: 900px;
+      padding: 60px 30px;
+      max-width: 1000px;
       margin: auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 0.8s ease-out;
     }
+    .visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
     h2 {
-      color: #1e1e1e;
-      border-bottom: 2px solid #4c4f52;
-      padding-bottom: 10px;
+      font-size: 2rem;
+      border-left: 4px solid #1e90ff;
+      padding-left: 10px;
+      margin-bottom: 20px;
     }
+
     .services, .merch-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
     }
+
     .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(99, 44, 44, 0.1);
+      padding: 25px;
+      border-radius: 14px;
+      background: #1a1c20;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
     }
-    footer {
-      background: #1e1e1e;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 35px rgba(0,110,255,0.5);
     }
+
     .cta {
-      background: #1b5da3;
+      background: #1e90ff;
       color: white;
-      padding: 12px 20px;
-      border-radius: 6px;
+      padding: 10px 18px;
       display: inline-block;
-      margin-top: 10px;
+      border-radius: 6px;
       text-decoration: none;
+      margin-top: 10px;
+      transition: 0.3s;
     }
-    .cta:hover {
-      background: #4e5358;
+    .cta:hover { background: #1364b3; }
+
+    footer {
+      text-align: center;
+      background: #0a0a0a;
+      padding: 25px;
+      margin-top: 60px;
+    }
+
+    .glow {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: #1e90ff33;
+      filter: blur(80px);
+      border-radius: 50%;
+      animation: float 8s infinite alternate ease-in-out;
+      z-index: -1;
+    }
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-60px); }
     }
   </style>
-  
 </head>
-
-
 <body>
 
+<div class="glow" style="top: 10%; left: -5%;"></div>
+<div class="glow" style="bottom: 10%; right: -5%; animation-delay: 3s;"></div>
+
 <header>
+  <img src="MITS Logo.JPEG" alt="Moahloli IT Solutions Logo" style="width:110px; margin-bottom:20px; filter: drop-shadow(0 0 8px #1e90ff);">
   <h1>Moahloli IT Solutions</h1>
   <p>Empowering Businesses & Communities Through Technology</p>
 </header>
 
 <nav>
-  <a href="#about">About Us</a>
+  <img src="MITS Logo.JPEG" class="compact-logo" alt="Logo">
+  <a href="#about">About</a>
   <a href="#services">Services</a>
-  <a href="#lessons">Computer Lessons</a>
-  <a href="#merch">Merchandise</a>
-  <a href="#contact">Find Us</a>
+  <a href="#lessons">Lessons</a>
+  <a href="#merch">Merch</a>
+  <a href="#contact">Contact</a>
 </nav>
 
 <section id="about" class="section">
@@ -101,17 +207,9 @@
 <section id="services" class="section">
   <h2>Our Services</h2>
   <div class="services">
-    <div class="card">
-      <h3>Business Website Development</h3>
-      <p>We build clean, modern, and responsive websites tailored to your business needs.</p>
-      <a class="cta" href="#contact">Get a Quote</a>
-    </div>
-
-    <div class="card">
-      <h3>IT Support & Consultation</h3>
-      <p>We provide basic IT support and guidance to help your business operate smoothly.</p>
-      <a class="cta" href="#contact">Contact Us</a>
-    </div>
+    <div class="card"><h3>Website Development</h3><p>We build clean, modern, and responsive websites tailored to your business needs.</p>
+      <a class="cta" href="#contact">Get a Quote</a></div>
+    <div class="card"><h3>IT Support</h3><p>We provide basic IT support and guidance to help your business operate smoothly.</p><a class="cta" href="#contact">Contact Us</a></div>
   </div>
 </section>
 
@@ -119,56 +217,35 @@
   <h2>Computer Literacy Lessons</h2>
   <p>We offer training for individuals and small groups to help improve digital skills.</p>
   <div class="services">
-    <div class="card">
-      <h3>Basic Level</h3>
-      <p>Introduction to computers, typing, file management, and basic applications.</p>
-      <a class="cta" href="#contact">Enroll Now</a>
-    </div>
-
-    <div class="card">
-      <h3>Intermediate Level</h3>
-      <p>Includes MS Word, Excel, PowerPoint, email management, and internet safety.</p>
-      <a class="cta" href="#contact">Enroll Now</a>
-    </div>
+    <div class="card"><h3>Basic Level</h3><p>Introduction to computers, typing, file management, and basic applications.</p><a class="cta" href="#contact">Enroll</a></div>
+    <div class="card"><h3>Intermediate Level</h3><p>Includes MS Word, Excel, PowerPoint, email management, and internet safety.</p>
+      <a class="cta" href="#contact">Enroll</a></div>
   </div>
 </section>
 
 <section id="merch" class="section">
-  <h2>Clothing Merchandise</h2>
+  <h2>Merchandise</h2>
   <p>Represent Moahloli IT Solutions with our branded clothing items with programming quotes.</p>
   <div class="merch-grid">
-    <div class="card">
-      <h3>Hoodies</h3>
-      <p>Comfortable and stylish branded hoodies.</p>
-    </div>
-
-    <div class="card">
-      <h3>T‑Shirts</h3>
-      <p>High‑quality cotton T‑shirts with our company branding.</p>
-    </div>
-
-    <div class="card">
-      <h3>Caps</h3>
-      <p>Classic caps for everyday wear.</p>
-    </div>
+    <div class="card" href="#blank"><h3>Hoodies</h3><p>Comfortable and stylish branded hoodies.</p></div>
+    <div class="card"><h3>T‑Shirts</h3><p>High‑quality cotton T‑shirts with our company branding.</p></div>
+    <div class="card"><h3>Caps</h3><p>Classic caps for everyday wear.</p></div>
   </div>
 </section>
 
-
 <section id="contact" class="section">
-  <h2 class="ContactUs">Contact Us</h2>
-  <p>For quotes, lesson bookings, or merchandise orders, contact us below:</p>
+  <h2>Contact Us</h2>
+  <p><strong>For quotes, lesson bookings, or merchandise orders, please do contact us below:</strong></p>
   <p><strong>Email:</strong> bksmoahloli@gmail.com</p>
   <p><strong>Phone:</strong> 065 932 8500</p>
+  <p><strong>Instagram:</strong> @moahloliitsolutions</p>
 </section>
-
 
 <section id="location" class="section">
    <h3>Address</h3>
       <p>Visit us at our office:</p>
       <p>9312 Makhabane Street, Phuthaditjhaba 9866</p>
 </section>
-
 
 <section id="operating hours" class="section">
   <h3>Operating Hours</h3>
@@ -177,9 +254,32 @@
   <p>Sunday: Closed</p>
 </section>
 
+
 <footer>
   <p>© 2024 Moahloli IT Solutions. All rights reserved.</p>
 </footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.section').forEach(section => {
+    observer.observe(section);
+  });
+  // Navbar scroll detection ntho tsa teng
+  const navbar = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 120) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
+
+    // Mobile menu toggle (additional ntho tsa teng)
+  const menuBtn=document.querySelector('.menu-btn');
+  menuBtn.onclick=()=>nav.classList.toggle('active');
+</script>
 
 </body>
 </html>
