@@ -16,6 +16,7 @@
       background: #0e0f11;
       color: #e5e5e5;
       overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html { scroll-behavior: smooth; }
@@ -29,6 +30,17 @@
       position: relative;
       overflow: hidden;
       animation: fadeDown 1s ease-in-out;
+    }
+    @media (max-width: 600px) {
+      header {
+        padding: 40px 8px;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
     }
     header::before {
       content: "";
@@ -45,6 +57,7 @@
       transform: translate(-50%, -50%);
       filter: blur(1px);
       pointer-events: none;
+      z-index: 1;
     }
 
     @keyframes fadeDown {
@@ -69,17 +82,38 @@
       backdrop-filter: blur(7px);
       transition: 0.4s;
     }
+    @media (max-width: 600px) {
+      nav {
+        padding: 10px 5px;
+        gap: 10px;
+      }
+      nav img.compact-logo {
+        height: 28px;
+        margin-right: 10px;
+      }
+    }
     nav img.compact-logo {
       height: 35px;
       margin-right: 20px;
-      opacity: 0;
+      opacity: 1;
       transition: 0.4s ease;
     }
     nav.scrolled img.compact-logo {
       opacity: 1;
     }/* MOBILE MENU */
-      .menu-btn{display:none;cursor:pointer;font-size:1.8rem;color:white}
-      @media(max-width:750px){nav{justify-content:space-between}nav a{display:none}nav.active a{display:block;padding:12px 0}nav.active{flex-direction:column;align-items:flex-start}.menu-btn{display:block}}
+    .menu-btn{display:none;cursor:pointer;font-size:2rem;color:white}
+    @media(max-width:750px){
+      nav{justify-content:space-between}
+      nav a{display:none}
+      nav.active a{display:block;padding:12px 0}
+      nav.active{flex-direction:column;align-items:flex-start}
+      .menu-btn{display:block}
+    }
+    @media (max-width: 600px) {
+      .menu-btn {
+        font-size: 2.2rem;
+      }
+    }
 
       /* CARDS */
     .card{padding:25px;border-radius:12px;background:#1a1c20;box-shadow:0 0 25px #0006;transition:.3s;cursor:pointer;position:relative;overflow:hidden}
@@ -113,6 +147,16 @@
       transform: translateY(30px);
       transition: 0.8s ease-out;
     }
+    @media (max-width: 600px) {
+      .section {
+        padding: 30px 8px;
+        max-width: 100vw;
+      }
+      h2 {
+        font-size: 1.3rem;
+        padding-left: 6px;
+      }
+    }
     .visible {
       opacity: 1 !important;
       transform: translateY(0) !important;
@@ -130,12 +174,21 @@
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 25px;
     }
+    @media (max-width: 600px) {
+      .services, .merch-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .card {
+        padding: 16px;
+      }
+    }
 
     .card {
       padding: 25px;
       border-radius: 14px;
       background: #1a1c20;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      box-shadow: 0 0 20px rgba(54, 53, 53, 0.3);
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
     }
@@ -162,6 +215,12 @@
       padding: 25px;
       margin-top: 60px;
     }
+    @media (max-width: 600px) {
+      footer {
+        padding: 18px 4px;
+        font-size: 0.95rem;
+      }
+    }
 
     .glow {
       position: absolute;
@@ -185,7 +244,7 @@
 <div class="glow" style="bottom: 10%; right: -5%; animation-delay: 3s;"></div>
 
 <header>
-  <img src="MITS Logo.JPEG" alt="Moahloli IT Solutions Logo" style="width:110px; margin-bottom:20px; filter: drop-shadow(0 0 8px #1e90ff);">
+  <img src="MITS Logo.JPEG" alt="Moahloli IT Solutions Logo" style="width:110px; margin-bottom:20px; filter: drop-shadow(0 0 8px #1e90ff); position:relative; z-index:2; display:block; margin-left:auto; margin-right:auto;">
   <h1>Moahloli IT Solutions</h1>
   <p>Empowering Businesses & Communities Through Technology</p>
 </header>
@@ -197,21 +256,20 @@
   <a href="#lessons">Lessons</a>
   <a href="#merch">Merch</a>
   <a href="#contact">Contact</a>
+  <span class="menu-btn">☰</span>
 </nav>
 
 <section id="about" class="section">
   <h2>About Us</h2>
-  <p><strong>Moahloli IT Solutions</strong> was established in 2024 by <strong>Bongani Katleho Sidwell Moahloli</strong>. In today’s fast-moving digital world, many businesses struggle to keep up with technology while still trying to grow. Our company was built to solve exactly that problem. We provide modern, reliable websites that help businesses show their value, attract customers, and compete with confidence. Whether a business is just starting out or already established, we make sure they have the digital tools they need to succeed.
-
-Beyond websites, we believe that knowledge is the foundation of long-term growth. That’s why we offer computer literacy lessons for beginners and intermediate learners. Our training is designed to be simple, practical, and empowering, helping individuals and communities gain the skills they need to take control of their digital future. When people understand technology, they can participate more fully in the economy, start new opportunities, and improve their everyday lives.</p>
+  <p><strong>Moahloli IT Solutions</strong> was established in 2024 by <strong>Bongani Katleho Sidwell Moahloli</strong>. In today’s fast-moving digital world, many businesses struggle to keep up with technology while still trying to grow. Our company was built to solve exactly that problem. We provide modern, reliable websites that help businesses show their value, attract customers, and compete with confidence. Whether a business is just starting out or already established, we make sure they have the digital tools they need to succeed.</p>
 </section>
 
-<section id="about" class="section">
+<section id="vision" class="section">
   <h2>Vision</h2>
   <p>Our company also expresses its identity and vision through quality clothing merchandise. These products are more than just apparel, they represent confidence, innovation, and the spirit of building something meaningful. The merchandise helps our clients connect with the brand and feel part of a community that values progress, creativity, and ambition.</p>
 </section>
 
-<section id="about" class="section">
+<section id="mission" class="section">
   <h2>Mission</h2>
   <p>At the heart of our business is to make technology accessible, supportive, and genuinely useful to every business and individual we serve. We are driven by a vision of communities where digital skills are common, opportunities are open to everyone, and businesses have the tools to grow without unnecessary barriers. Every service we offer supports this vision by bringing people closer to the digital world in a simple and helpful way.
 
@@ -225,7 +283,7 @@ Most importantly, we believe in giving back to the communities we serve. When we
 <section id="services" class="section">
   <h2>Our Services</h2>
   <div class="services">
-    <div class="card"><h3>Website Development</h3><p>We build clean, modern, and responsive websites tailored to your business needs.</p>
+    <div class="card"><h3>Website Development</h3><p>We build clean, modern, and responsive websites tailored to your business/personal needs.</p>
       <a class="cta" href="#contact">Get a Quote</a></div>
     <div class="card"><h3>IT Support</h3><p>We provide basic IT support and guidance to help your business operate smoothly.</p><a class="cta" href="#contact">Contact Us</a></div>
   </div>
@@ -245,7 +303,7 @@ Most importantly, we believe in giving back to the communities we serve. When we
   <h2>Merchandise</h2>
   <p>Represent Moahloli IT Solutions with our branded clothing items with programming quotes.</p>
   <div class="merch-grid">
-    <div class="card" href="#blank"><h3>Hoodies</h3><p>Comfortable and stylish branded hoodies.</p></div>
+    <div class="card"><h3>Hoodies</h3><p>Comfortable and stylish branded hoodies.</p></div>
     <div class="card"><h3>T‑Shirts</h3><p>High‑quality cotton T‑shirts with our company branding.</p></div>
     <div class="card"><h3>Caps</h3><p>Classic caps for everyday wear.</p></div>
   </div>
@@ -296,8 +354,10 @@ Most importantly, we believe in giving back to the communities we serve. When we
 
     // Mobile menu toggle (additional ntho tsa teng)
   const menuBtn=document.querySelector('.menu-btn');
-  menuBtn.onclick=()=>nav.classList.toggle('active');
+  menuBtn.onclick=()=>navbar.classList.toggle('active');
 </script>
+
 
 </body>
 </html>
+
